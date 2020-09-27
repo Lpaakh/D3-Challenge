@@ -1,19 +1,25 @@
-// set the dimensions and margins of the graph
+//     Scatter plot design using D3.js
+//     By: Laura Paakh May
+
+// Set the dimensions and margins of the graph
 var margin = {top: 20, right: 20, bottom: 50, left: 50},
     width = 960 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
-    
+
+// Create x and y variables to be used for scaling
 var x = d3.scaleLinear()
     .range([0, width]);
 var y = d3.scaleLinear()
     .range([height, 0]);
+
+// Set variable equal to svg to connect with html file and set margins 
 var svg = d3.select("#scatter").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    // Read the data from the csv
+// Read the data from the csv
 d3.csv("./assets/data/data.csv").then(function(data) { 
 
     // Coerce the strings to numbers.
@@ -54,7 +60,7 @@ d3.csv("./assets/data/data.csv").then(function(data) {
         .attr("transform", "rotate(-90)")
         .text("Smokers");
 
-    // Add the points!
+    // Add the points
     svg.selectAll(".point")
         .data(data)
         .enter().append("circle")
@@ -62,9 +68,10 @@ d3.csv("./assets/data/data.csv").then(function(data) {
         .attr("d", d3.symbol().type(d3.symbolCircle))
         .attr("transform", function(d) { return "translate(" + x(d.age) + "," + y(d.smokes) + ")"; })
         .attr("r",10 )
-        .attr("fill","green")
+        .attr("fill","gray")
         ;
 
+    // Add the state abbreviations to each dot
     svg.selectAll(".abbr")
         .data(data)
         .enter().append("text")
