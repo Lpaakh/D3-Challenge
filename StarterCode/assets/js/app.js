@@ -1,46 +1,80 @@
 // set the dimensions and margins of the graph
-var margin = {top: 10, right: 30, bottom: 30, left: 60},
-    width = 460 - margin.left - margin.right,
-    height = 400 - margin.top - margin.bottom;
+var margin = {top: 20, right: 20, bottom: 50, left: 50},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+    
+var x = d3.scaleLinear()
+    .range([0, width]);
+var y = d3.scaleLinear()
+    .range([height, 0]);
+var svg = d3.select("#scatter").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-// append the svg object to the body of the page
-var svg = d3.select("#scatter")
-.append("svg")
-.attr("width", width + margin.left + margin.right)
-.attr("height", height + margin.top + margin.bottom)
-.append("g")
-.attr("transform",
-        "translate(" + margin.left + "," + margin.top + ")");
+    // Read the data from the csv
+d3.csv("./assets/data/data.csv").then(function(data) { 
 
-// Read the data from the csv
-d3.csv("./assets/data/data.csv", function(data) {
-    // Add X axis
-    var x = d3.scaleLinear(data.smokes)
-    .domain([0, 3000])
-    .range([ 0, width ]);
+    // Coerce the strings to numbers.
+    data.forEach(function(d) {
+        d.age = +d.age;
+        d.smokes = +d.smokes;
+    });
+
+    // Compute the scales domains.
+    x.domain(d3.extent(data, function(d) { return d.age; })).nice();
+    y.domain(d3.extent(data, function(d) { return d.smokes; })).nice();
+
+    // Add the x-axis.
     svg.append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x));
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(d3.axisBottom(x));
 
-    // Add Y axis
-    var y = d3.scaleLinear(data.age)
-    .domain([0, 400000])
-    .range([ height, 0]);
+    // Add label to the x-axis.
+    svg.append("text")
+        .attr("class", "x label")
+        .attr("text-anchor", "end")
+        .attr("x", width/2 + margin.left)
+        .attr("y", height + margin.top + 20)
+        .text("Age (years)");
+ 
+    // Add the y-axis.
     svg.append("g")
-    .call(d3.axisLeft(y));
+        .attr("class", "y axis")
+        .call(d3.axisLeft(y));
 
-    // Add a tooltip div. Here I define the general feature of the tooltip: stuff that do not depend on the data point.
-    // Its opacity is set to 0: we don't see it by default.
-    var tooltip = d3.select("#my_dataviz")
-    .append("div")
-    .style("opacity", 0)
-    .attr("class", "tooltip")
-    .style("background-color", "white")
-    .style("border", "solid")
-    .style("border-width", "1px")
-    .style("border-radius", "5px")
-    .style("padding", "10px")
+    // Add label to the y-axis.
+    svg.append("text")
+        .attr("class", "y label")
+        .attr("text-anchor", "end")
+        .attr("y", -margin.left + 20)
+        .attr("x", -margin.top - height/2 + 20)
+        .attr("transform", "rotate(-90)")
+        .text("Smokers");
 
-})
+    // Add the points!
+    svg.selectAll(".point")
+        .data(data)
+        .enter().append("circle")
+        .attr("class", "point")
+        .attr("d", d3.symbol().type(d3.symbolCircle))
+        .attr("transform", function(d) { return "translate(" + x(d.age) + "," + y(d.smokes) + ")"; })
+        .attr("r",10 )
+        .attr("fill","green")
+        ;
 
+    svg.selectAll(".abbr")
+        .data(data)
+        .enter().append("text")
+        .attr("class", "abbr")
+        .attr("x", function(d) { return x(d.age) -15; })
+        .attr("y", function(d) { return y(d.smokes); })
+        .attr("dx", ".71em")
+        .attr("dy", ".35em")
+        .text(function(d) { return d.abbr;})
+        .attr("fill","white")
+        .attr("font-size","10"); 
+    });
 
