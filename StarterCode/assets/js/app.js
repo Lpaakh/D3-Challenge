@@ -68,7 +68,7 @@ d3.csv("./assets/data/data.csv").then(function(data) {
         .attr("d", d3.symbol().type(d3.symbolCircle))
         .attr("transform", function(d) { return "translate(" + x(d.age) + "," + y(d.smokes) + ")"; })
         .attr("r",10 )
-        .attr("fill","gray")
+        .attr("fill","brown")
         ;
 
     // Add the state abbreviations to each dot
