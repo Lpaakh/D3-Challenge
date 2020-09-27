@@ -1,5 +1,7 @@
 # D3 Homework - Data Journalism and D3
 
+[Click here to view her work](https://lpaakh.github.io/D3-Challenge/StarterCode/index.html)
+
 ![Newsroom](https://media.giphy.com/media/v2xIous7mnEYg/giphy.gif)
 
 ## Background
