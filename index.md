@@ -1,37 +1,67 @@
-## Welcome to GitHub Pages
+## Welcome to Laura Paakh May's D3-Challenge
 
-You can use the [editor on GitHub](https://github.com/Lpaakh/D3-Challenge/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+[Click here to view her completed work](https://lpaakh.github.io/D3-Challenge/index.html).
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+![Newsroom](https://media.giphy.com/media/v2xIous7mnEYg/giphy.gif)
 
-### Markdown
+## Background
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+Laura Paakh May complete the following assignment on September 26th, 2020.
 
-```markdown
-Syntax highlighted code block
+"Welcome to the newsroom! You've just accepted a data visualization position for a major metro paper. You're tasked with analyzing the current trends shaping people's lives, as well as creating charts, graphs, and interactive elements to help readers understand your findings.
 
-# Header 1
-## Header 2
-### Header 3
+The editor wants to run a series of feature stories about the health risks facing particular demographics. She's counting on you to sniff out the first story idea by sifting through information from the U.S. Census Bureau and the Behavioral Risk Factor Surveillance System.
 
-- Bulleted
-- List
+The data set included with the assignment is based on 2014 ACS 1-year estimates: [https://factfinder.census.gov/faces/nav/jsf/pages/searchresults.xhtml](https://factfinder.census.gov/faces/nav/jsf/pages/searchresults.xhtml), but you are free to investigate a different data set. The current data set includes data on rates of income, obesity, poverty, etc. by state. MOE stands for "margin of error."
 
-1. Numbered
-2. List
+### Before You Begin
 
-**Bold** and _Italic_ and `Code` text
+1. Create a new repository for this project called `D3-challenge`. **Do not add this homework to an existing repository**.
 
-[Link](url) and ![Image](src)
-```
+2. Clone the new repository to your computer.
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+3. Inside your local git repository, create a directory for the D3 challenge. Use the folder name to correspond to the challenge: **D3_data_journalism**.
 
-### Jekyll Themes
+4. This homeworks utilizes both **html** and **Javascript** so be sure to add all the necessary files. These will be the main files to run for analysis.
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Lpaakh/D3-Challenge/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+5. Push the above changes to GitHub or GitLab.
 
-### Support or Contact
+## Your Task
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+### Core Assignment: D3 Dabbler (Required Assignment)
+
+![4-scatter](Images/4-scatter.jpg)
+
+You need to create a scatter plot between two of the data variables such as `Healthcare vs. Poverty` or `Smokers vs. Age`.
+
+Using the D3 techniques we taught you in class, create a scatter plot that represents each state with circle elements. You'll code this graphic in the `app.js` file of your homework directory—make sure you pull in the data from `data.csv` by using the `d3.csv` function. Your scatter plot should ultimately appear like the image at the top of this section.
+
+* Include state abbreviations in the circles.
+
+* Create and situate your axes and labels to the left and bottom of the chart.
+
+* Note: You'll need to use `python -m http.server` to run the visualization. This will host the page at `localhost:8000` in your web browser.
+
+- - -
+
+### Assessment
+
+Your final product will be assessed on the following metrics:
+
+* Creation of a **new** repository on GitHub called `D3-Challenge` (note the kebab-case). Do not add to an already existing repo.
+
+* Completion of all steps in the core assignment
+
+* Coherency of scatter plot (labels, ticks)
+
+* Visual attraction
+
+* Professionalism
+
+* Ensure your repository has regular commits (i.e. 20+ commits) and a thorough README.md file
+
+**Good luck!**
+
+### Copyright
+
+Trilogy Education Services © 2019. All Rights Reserved."
