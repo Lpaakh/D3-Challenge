@@ -44,7 +44,7 @@ d3.csv("./assets/data/data.csv").then(function(data) {
         .attr("text-anchor", "end")
         .attr("x", width/2 + margin.left)
         .attr("y", height + margin.top + 20)
-        .text("Age (years)");
+        .text("Average Age (years)");
  
     // Add the y-axis.
     svg.append("g")
@@ -58,7 +58,7 @@ d3.csv("./assets/data/data.csv").then(function(data) {
         .attr("y", -margin.left + 20)
         .attr("x", -margin.top - height/2 + 20)
         .attr("transform", "rotate(-90)")
-        .text("Smokers");
+        .text("Smokes (%)");
 
     // Add the points
     svg.selectAll(".point")
